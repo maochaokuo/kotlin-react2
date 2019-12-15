@@ -87,3 +87,8 @@ class VideoList(props: VideoListProps) : RComponent<VideoListProps, VideoListSta
 ```dtd
 yarn add react-player
 ```
+
+### Adding social share buttons
+```dtd
+yarn add react-share
+```

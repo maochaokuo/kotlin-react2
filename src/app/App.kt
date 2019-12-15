@@ -26,6 +26,9 @@ class App : RComponent<RProps, RState>() {
             h3 {
                 +"Videos to watch"
             }
+            videoList {
+                videos = unwatchedVideos
+            }
             child(VideoList::class) {
 
                 attrs.videos = unwatchedVideos

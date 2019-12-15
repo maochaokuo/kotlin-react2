@@ -73,3 +73,6 @@ class VideoList(props: VideoListProps) : RComponent<VideoListProps, VideoListSta
     }
 }
 ```
+
+## Working together: Composing components
+[Working together: Composing components](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/05_Working_Together_Composing_Components)

@@ -8,9 +8,12 @@ import ticker.*
 import kotlinx.css.*
 import styled.*
 
+interface AppState: RState {
+    var currentVideo: Video?
+}
 data class Video(val id: Int, val title: String, val speaker: String, val videoUrl: String)
 
-class App : RComponent<RProps, RState>() {
+class App : RComponent<RProps, AppState>() {
     override fun RBuilder.render() {
 
         val unwatchedVideos = listOf(
@@ -22,42 +25,51 @@ class App : RComponent<RProps, RState>() {
         val watchedVideos = listOf(
                 Video(4, "Mouseless development", "Tom Jerry", "https://youtu.be/PsaFVLr8t4E")
         )
+        h1 {
+            +"KotlinConf Explorer"
+        }
         div {
             h3 {
                 +"Videos to watch"
             }
             videoList {
                 videos = unwatchedVideos
-            }
-            child(VideoList::class) {
-
-                attrs.videos = unwatchedVideos
+                selectedVideo = state.currentVideo
+                onSelectVideo = { video ->
+                    setState {
+                        currentVideo = video
+                    }
+                }
             }
 
             h3 {
                 +"Videos watched"
             }
-            child(VideoList::class) {
-
-                attrs.videos = watchedVideos
+            videoList {
+                videos = watchedVideos
+                selectedVideo = state.currentVideo
+                onSelectVideo = { video ->
+                    setState {
+                        currentVideo = video
+                    }
+                }
             }
         }
-
-//        styledDiv {
-//            css {
-//                position = Position.absolute
-//                top = 10.px
-//                right = 10.px
-//            }
-//            h3 {
-//                +"John Doe: Building and breaking things"
-//            }
-//            img {
-//                attrs {
-//                    src = "https://via.placeholder.com/640x360.png?text=Video+Player+Placeholder"
-//                }
-//            }
-//        }
+        styledDiv {
+            css {
+                position = Position.absolute
+                top = 10.px
+                right = 10.px
+            }
+            h3 {
+                +"John Doe: Building and breaking things"
+            }
+            img {
+                attrs {
+                    src = "https://via.placeholder.com/640x360.png?text=Video+Player+Placeholder"
+                }
+            }
+        }
 //
 //        for(video in unwatchedVideos) {
 //            p {

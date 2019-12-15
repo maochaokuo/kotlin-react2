@@ -9,6 +9,8 @@ fun main(args: Array<String>) {
     //requireAll(require.context("src", true, js("/\\.css$/")))
 
     render(document.getElementById("root")) {
-        app(  )
+        child(App::class) {}
+
+//        app(  )
     }
 }

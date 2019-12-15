@@ -1,5 +1,6 @@
 package app
 
+import kotlinx.coroutines.await
 import react.*
 import react.dom.*
 import logo.*
@@ -7,6 +8,7 @@ import ticker.*
 
 import kotlinx.css.*
 import styled.*
+import kotlin.browser.window
 
 interface AppState : RState {
     var currentVideo: Video?
@@ -16,7 +18,13 @@ interface AppState : RState {
 data class Video(val id: Int, val title: String, val speaker: String, val videoUrl: String)
 
 class App: RComponent<RProps, AppState>() {
-
+    suspend fun fetchVideo(id: Int): Video {
+        val responsePromise = window.fetch("https://my-json-server.typicode.com/kotlin-hands-on/kotlinconf-json/videos/$id")
+        val response = responsePromise.await()
+        val jsonPromise = response.json()
+        val json = jsonPromise.await()
+        return json.unsafeCast<Video>()
+    }
     override fun AppState.init() {
         unwatchedVideos = listOf(
                 Video(1, "Building and breaking things", "John Doe", "https://youtu.be/PsaFVLr8t4E"),

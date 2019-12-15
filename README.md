@@ -92,3 +92,11 @@ yarn add react-player
 ```dtd
 yarn add react-share
 ```
+
+## Using an external REST API
+[Using an external REST API](https://play.kotlinlang.org/hands-on/Building%20Web%20Applications%20with%20React%20and%20Kotlin%20JS/08_Using_an_External_REST_API)
+
+### Coroutines instead of callbacks
+```dtd
+yarn add kotlinx-coroutines-core
+```

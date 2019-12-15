@@ -5,22 +5,26 @@ import react.dom.*
 import logo.*
 import ticker.*
 
+
 class App : RComponent<RProps, RState>() {
     override fun RBuilder.render() {
-        div("App-header") {
-            logo()
-            h2 {
-                +"Welcome to React with Kotlin"
-            }
+        h1 {
+            +"Hello, React+Kotlin/JS!"
         }
-        p("App-intro") {
-            +"To get started, edit "
-            code { +"app/App.kt" }
-            +" and save to reload."
-        }
-        p("App-ticker") {
-            ticker()
-        }
+//        div("App-header") {
+//            logo()
+//            h2 {
+//                +"Welcome to React with Kotlin"
+//            }
+//        }
+//        p("App-intro") {
+//            +"To get started, edit "
+//            code { +"app/App.kt" }
+//            +" and save to reload."
+//        }
+//        p("App-ticker") {
+//            ticker()
+//        }
     }
 }
 
